@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100vh;
+    background: #2a2a2a;
+    display: grid;
+    place-content: center;
+}
+.card{
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+.card .face{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transform: perspective(500px) rotateY(0);
+    backface-visibility: hidden;
+    transition: all 0.5s ease-in-out;
+}
+.card .face.front{
+    transform: perspective(500px) rotateY(0);
+}
+.card .face.front::before{
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background: transparent;
+    border: 2px solid #fefae0;
+}
+.card .face.front::after{
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: transparent;
+    border-top: 5px solid #fefae0;
+    border-bottom: 5px solid #fefae0;
+}
+.card .face.front img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card .face.back{
+    text-align: center;
+    background: #fefae0;
+    transform: perspective(500px) rotateY(180deg);
+}
+.card .face.back h3{
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+}
+.card .face.back span{
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding-bottom: 20px;
+}
+.card .face.back ul{
+    display: block;
+}
+.card .face.back ul li{
+    display: inline-block;
+}
+.card .face.back ul li a{
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    background: transparent;
+    border: 2px solid #2a2a2a;
+    color: #2a2a2a;
+    margin: 5px;
+    transition: all 0.3s ease-in-out;
+}
+.card .face.back ul li a i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.card .face.back ul li:hover a{
+    background: #2a2a2a;
+    color: #fefae0;
+    transform: scale(1.4);
+}
+.card:hover .face.front{
+    transform: perspective(500px) rotateY(180deg);
+}
+.card:hover .face.back{
+    transform: perspective(500px) rotateY(360deg);
+}
